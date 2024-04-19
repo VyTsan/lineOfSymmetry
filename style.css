@@ -1,0 +1,89 @@
+* {
+  letter-spacing: 2px;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1em;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: repeat(10,10%);
+}
+
+#container > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#title {
+  grid-row: 2/3;
+}
+
+#shape_name {
+  grid-row: 3/4;
+  
+}
+
+#shape_name > div {
+  padding: 0.25em 0.75em;
+  border-left: #000 solid;
+  border-right: #000 solid;
+  margin-bottom: 10px;
+}
+
+#board_area {
+  grid-row: 4/8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn_area {
+  grid-row: 8/10;
+  display: flex;
+}
+
+button {
+  margin: 20px;
+  letter-spacing: 2px;
+  font-size: large;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+button:disabled {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+  color: gray;
+  cursor: default;
+}
+
+@media (min-width: 768px) {
+  button {
+    padding: 0.5em 1.25em;
+  }
+}
