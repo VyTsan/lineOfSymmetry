@@ -3,7 +3,7 @@ let shapes = [
     name: 'Hình Chữ Nhật',
     drawFunc : () => {
         rectMode(CENTER);
-        rect(width/2,height/2,tileWidth*6,tileWidth*4);
+        rect(width/2,height/2,tileWidth*8,tileWidth*6);
     },
     numberOfLoS: 2,
     vOrg : [
@@ -21,7 +21,7 @@ let shapes = [
     name: 'Hình Vuông',
     drawFunc : () => {
         rectMode(CENTER);
-        rect(width/2,height/2,tileWidth*4,tileWidth*4);
+        rect(width/2,height/2,tileWidth*6,tileWidth*6);
     },
     numberOfLoS: 4,
     vOrg : [
@@ -49,10 +49,10 @@ let shapes = [
         push();
         translate(width/2, height/2);
         beginShape();
-        vertex(0, -2*tileWidth); 
-        vertex(3*tileWidth, 2*tileWidth);
-        vertex(-3*tileWidth, 2*tileWidth);
-        vertex(0, -2*tileWidth);
+        vertex(0, -3*tileWidth); 
+        vertex(4*tileWidth, 3*tileWidth);
+        vertex(-4*tileWidth, 3*tileWidth);
+        vertex(0, -3*tileWidth);
         endShape();
         pop();
     },
@@ -70,11 +70,11 @@ let shapes = [
         push();
         translate(width/2, height/2);
         beginShape();
-        vertex(0, 2*tileWidth);
-        vertex(4*tileWidth, 0);
-        vertex(0, -2*tileWidth);
-        vertex(-4*tileWidth, 0);
-        vertex(0, 2*tileWidth);
+        vertex(0, 3*tileWidth);
+        vertex(5*tileWidth, 0);
+        vertex(0, -3*tileWidth);
+        vertex(-5*tileWidth, 0);
+        vertex(0, 3*tileWidth);
         endShape();
         pop();
     },
@@ -96,11 +96,11 @@ let shapes = [
         push();
         translate(width/2, height/2);
         beginShape();
-        vertex(-2*tileWidth, -2*tileWidth);
-        vertex(2*tileWidth, -2*tileWidth);
-        vertex(4*tileWidth, 2*tileWidth);
-        vertex(-4*tileWidth, 2*tileWidth);
-        vertex(-2*tileWidth, -2*tileWidth);
+        vertex(-2*tileWidth, -3*tileWidth);
+        vertex(2*tileWidth, -3*tileWidth);
+        vertex(5*tileWidth, 3*tileWidth);
+        vertex(-5*tileWidth, 3*tileWidth);
+        vertex(-2*tileWidth, -3*tileWidth);
         endShape();
         pop();
     },
@@ -118,11 +118,11 @@ let shapes = [
         push();
         translate(width/2, height/2);
         beginShape();
-        vertex(-2*tileWidth, -2*tileWidth);
-        vertex(4*tileWidth, -2*tileWidth);
-        vertex(2*tileWidth, 2*tileWidth);
-        vertex(-4*tileWidth, 2*tileWidth);
-        vertex(-2*tileWidth, -2*tileWidth);
+        vertex(-2*tileWidth, -3*tileWidth);
+        vertex(5*tileWidth, -3*tileWidth);
+        vertex(2*tileWidth, 3*tileWidth);
+        vertex(-5*tileWidth, 3*tileWidth);
+        vertex(-2*tileWidth, -3*tileWidth);
         endShape();
         pop();
     },
