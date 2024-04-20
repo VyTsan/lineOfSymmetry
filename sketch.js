@@ -13,9 +13,11 @@ let shapeNum;
 let shapeName;
 
 function setup() {
-  c=createCanvas(600, 400);
+  let ratio = 8/5;
+  let h = windowHeight*4/10;
+  c=createCanvas(h*ratio, h);
   c.parent('board');
-  tileWidth = 50;
+  tileWidth = h/10;
   n = width/tileWidth;
   //buttons
   undoBtn = createButton('UNDO');
