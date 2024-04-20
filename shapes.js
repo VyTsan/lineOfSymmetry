@@ -46,9 +46,15 @@ let shapes = [
 {
     name: 'Hình Tam Giác Cân',
     drawFunc : () => {
-        line(6*tileWidth,2*tileWidth,3*tileWidth,6*tileWidth);
-        line(6*tileWidth,2*tileWidth,9*tileWidth,6*tileWidth);
-        line(3*tileWidth,6*tileWidth,9*tileWidth,6*tileWidth);
+        push();
+        translate(width/2, height/2);
+        beginShape();
+        vertex(0, -2*tileWidth); 
+        vertex(3*tileWidth, 2*tileWidth);
+        vertex(-3*tileWidth, 2*tileWidth);
+        vertex(0, -2*tileWidth);
+        endShape();
+        pop();
     },
     numberOfLoS: 1,
     vOrg : [
