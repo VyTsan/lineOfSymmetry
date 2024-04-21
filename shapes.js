@@ -77,8 +77,7 @@ let shapes = [
         {x:0,y:1},
     ],
 },
-{
-    name: 'Hình Bình Hành',
+{   name: 'Hình Bình Hành',
     vertexArr : [
         {x:-2,y:-3},
         {x:1.5,y:-3},

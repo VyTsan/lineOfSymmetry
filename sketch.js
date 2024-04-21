@@ -4,6 +4,7 @@ let p1,p2;
 let pArr = [];
 let vOrg = [];
 let posX,posY;
+let vertexCatched = false;
 let lineColor;
 let checkMode = false;
 let showMode = false;
@@ -50,17 +51,8 @@ function setup() {
 
 function draw() {
   //reset
-  background(255);
-  //draw cells
-  rectMode(CORNER);
-  stroke(0);
-  fill('#f4f0e8');
-  strokeWeight(1);
-  for (let j=0; j<n; j++) {
-    for (let i=0; i<n; i++) {
-      rect(i*tileWidth,j*tileWidth,tileWidth);
-    }
-  }
+  background('#f4f0e8');
+
   //draw shape
   fill(255,10);
   strokeWeight(5);
@@ -78,16 +70,7 @@ function draw() {
   endShape();
   pop();
 
-  //display rounded position of point on grid
-  if (!checkMode && !showMode) {
-    stroke(100,200);
-    if (mouseX>0 && mouseX<width && mouseY<height && mouseY>0 && !p2) {
-      posX = round(mouseX/tileWidth)*tileWidth;
-      posY = round(mouseY/tileWidth)*tileWidth;
-      strokeWeight(15);
-      point(posX,posY);
-    }
-  }
+  cursorCatchVertex();
   //draw p1
   if (p1) {
     strokeWeight(15);
@@ -96,9 +79,13 @@ function draw() {
   //draw that line that follows mouse while no p2 yet
   if (p1 && !p2) {
     strokeWeight(5);
-    endlessLine(p1.x,p1.y,posX,posY);
+    if (vertexCatched==false) {
+      endlessLine(p1.x,p1.y,mouseX,mouseY);
+    } else {
+      endlessLine(p1.x,p1.y,posX,posY);
+    }
   }
-  //when there is p2 form a triplet in array
+  //when there is p2 form a couple in array
   if (p2) {
     pArr.push(p1,p2);
     resetp1p2();
@@ -111,7 +98,7 @@ function draw() {
         point(pArr[i]);
         point(pArr[i-1]);
       }
-      strokeWeight(5);
+      strokeWeight(4);
       if (checkMode) {
         pArr[i].isCorrect ? lineColor=color('green') : lineColor=color('red');
       } else {
@@ -133,10 +120,27 @@ function draw() {
   }
 
 }
-
+function cursorCatchVertex() {
+  if (!checkMode && !showMode) {
+    stroke(100,200);
+      if (mouseX>0 && mouseX<width && mouseY<height && mouseY>0 && !p2) {
+        for (let i=0; i<shapes[shapeNum].vertexArr.length; i++) {
+          vertexCatched=false;
+          if (dist(mouseX,mouseY,shapes[shapeNum].vertexArr[i].x*tileWidth+width/2,shapes[shapeNum].vertexArr[i].y*tileWidth+height/2)<30) {
+            strokeWeight(15);
+            point(shapes[shapeNum].vertexArr[i].x*tileWidth+width/2,shapes[shapeNum].vertexArr[i].y*tileWidth+height/2);
+            posX = shapes[shapeNum].vertexArr[i].x*tileWidth+width/2;
+            posY = shapes[shapeNum].vertexArr[i].y*tileWidth+height/2;
+            vertexCatched=true;
+            break;
+          }
+        }
+      }
+    }
+}
 function mousePressed() {
   if (!checkMode && !showMode) {
-    if (mouseX>0 && mouseX<width && mouseY<height && mouseY>0) {
+    if (mouseX>0 && mouseX<width && mouseY<height && mouseY>0 && vertexCatched==true) {
       if (!p1) {
         p1 = createVector(posX,posY);
       } else if (!p2) {
