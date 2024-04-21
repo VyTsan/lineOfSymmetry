@@ -1,133 +1,95 @@
 let shapes = [
-{
-    name: 'Hình Chữ Nhật',
-    drawFunc : () => {
-        rectMode(CENTER);
-        rect(width/2,height/2,tileWidth*8,tileWidth*6);
-    },
-    numberOfLoS: 2,
-    vOrg : [
-        {
-            x:0,
-            y:1
-        },
-        {
-            x:1,
-            y:0
-        },
+{   name: 'Hình Chữ Nhật',
+    vertexArr : [
+        {x:-4,y:-3},
+        {x:0,y:-3},
+        {x:4,y:-3},
+        {x:4,y:0},
+        {x:4,y:3},
+        {x:0,y:3},
+        {x:-4,y:3},
+        {x:-4,y:0},
+    ],
+    losArr : [
+        {x:0,y:1},
+        {x:1,y:0},
     ]
 },
-{
-    name: 'Hình Vuông',
-    drawFunc : () => {
-        rectMode(CENTER);
-        rect(width/2,height/2,tileWidth*6,tileWidth*6);
-    },
-    numberOfLoS: 4,
-    vOrg : [
-        {
-            x:0,
-            y:1
-        },
-        {
-            x:1,
-            y:0
-        },
-        {
-            x:1,
-            y:1
-        },
-        {
-            x:-1,
-            y:1
-        },
-    ]
+{   name: 'Hình Vuông',
+    vertexArr : [
+        {x:-3,y:-3},
+        {x:0,y:-3},
+        {x:3,y:-3},
+        {x:3,y:0},
+        {x:3,y:3},
+        {x:0,y:3},
+        {x:-3,y:3},
+        {x:-3,y:0},
+    ], 
+    losArr : [
+        {x:0,y:1},
+        {x:1,y:0},
+        {x:1,y:1},
+        {x:-1,y:1},
+    ],
 },
-{
-    name: 'Hình Tam Giác Cân',
-    drawFunc : () => {
-        push();
-        translate(width/2, height/2);
-        beginShape();
-        vertex(0, -3*tileWidth); 
-        vertex(4*tileWidth, 3*tileWidth);
-        vertex(-4*tileWidth, 3*tileWidth);
-        vertex(0, -3*tileWidth);
-        endShape();
-        pop();
-    },
-    numberOfLoS: 1,
-    vOrg : [
-        {
-            x:0,
-            y:1
-        },
-    ]
+{   name: 'Hình Tam Giác Cân',
+    vertexArr : [
+        {x:0,y:-3},
+        {x:2,y:0},
+        {x:4,y:3},
+        {x:0,y:3},
+        {x:-4,y:3},
+        {x:-2,y:0},
+    ],
+    losArr : [
+        {x:0,y:1},
+    ],
 },
-{
-    name: 'Hình Thoi',
-    drawFunc : () => {
-        push();
-        translate(width/2, height/2);
-        beginShape();
-        vertex(0, 3*tileWidth);
-        vertex(5*tileWidth, 0);
-        vertex(0, -3*tileWidth);
-        vertex(-5*tileWidth, 0);
-        vertex(0, 3*tileWidth);
-        endShape();
-        pop();
-    },
-    numberOfLoS: 2,
-    vOrg : [
-        {
-            x:0,
-            y:1
-        },
-        {
-            x:1,
-            y:0
-        },
-    ]
+{   name: 'Hình Thoi',
+    vertexArr : [
+        {x:0,y:-3},
+        {x:2.5,y:-1.5},
+        {x:5,y:0},
+        {x:2.5,y:1.5},
+        {x:0,y:3},
+        {x:-2.5,y:1.5},
+        {x:-5,y:0},
+        {x:-2.5,y:-1.5},
+    ],
+    losArr : [
+        {x:0,y:1},
+        {x:1,y:0},
+    ],
 },
-{
-    name: 'Hình Thang Cân',
-    drawFunc : () => {
-        push();
-        translate(width/2, height/2);
-        beginShape();
-        vertex(-2*tileWidth, -3*tileWidth);
-        vertex(2*tileWidth, -3*tileWidth);
-        vertex(5*tileWidth, 3*tileWidth);
-        vertex(-5*tileWidth, 3*tileWidth);
-        vertex(-2*tileWidth, -3*tileWidth);
-        endShape();
-        pop();
-    },
-    numberOfLoS: 1,
-    vOrg : [
-        {
-            x:0,
-            y:1
-        },
-    ]
+{   name: 'Hình Thang Cân',
+    vertexArr : [
+        {x:-2,y:-3},
+        {x:0,y:-3},
+        {x:2,y:-3},
+        {x:3.5,y:0},
+        {x:5,y:3},
+        {x:0,y:3},
+        {x:-5,y:3},
+        {x:-3.5,y:0},
+    ],
+    losArr : [
+        {x:0,y:1},
+    ],
 },
 {
     name: 'Hình Bình Hành',
-    drawFunc : () => {
-        push();
-        translate(width/2, height/2);
-        beginShape();
-        vertex(-2*tileWidth, -3*tileWidth);
-        vertex(5*tileWidth, -3*tileWidth);
-        vertex(2*tileWidth, 3*tileWidth);
-        vertex(-5*tileWidth, 3*tileWidth);
-        vertex(-2*tileWidth, -3*tileWidth);
-        endShape();
-        pop();
-    },
-    numberOfLoS: 0,
-    vOrg : []
+    vertexArr : [
+        {x:-2,y:-3},
+        {x:1.5,y:-3},
+        {x:5,y:-3},
+        {x:3.5,y:0},
+        {x:2,y:3},
+        {x:-1.5,y:3},
+        {x:-5,y:3},
+        {x:-3.5,y:0},
+    ],
+    losArr : [],
 },
 // {
 //     name: 'Hình Tam Giác Đều',

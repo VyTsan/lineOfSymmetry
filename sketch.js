@@ -40,8 +40,8 @@ function setup() {
   nextBtn.parent('next_btn');
   prevBtn.mousePressed(() => updateShapeNum(-1));
   nextBtn.mousePressed(() => updateShapeNum(1));
-  for (let i=0; i<shapes[shapeNum].numberOfLoS; i++) {
-    vOrg.push(shapes[shapeNum].vOrg[i]);
+  for (let i=0; i<shapes[shapeNum].losArr.length; i++) {
+    vOrg.push(shapes[shapeNum].losArr[i]);
   }
   lineColor = color(100,200);
   shapeName = createDiv(shapes[shapeNum].name);
@@ -65,7 +65,18 @@ function draw() {
   fill(255,10);
   strokeWeight(5);
   stroke(0);
-  shapes[shapeNum].drawFunc();
+  push();
+  translate(width/2, height/2);
+  beginShape();
+  for (let i=0; i<shapes[shapeNum].vertexArr.length; i++) {
+    let v = shapes[shapeNum].vertexArr[i];
+    vertex(v.x*tileWidth,v.y*tileWidth);
+    if (i==shapes[shapeNum].vertexArr.length-1) {
+      vertex(shapes[shapeNum].vertexArr[0].x*tileWidth,shapes[shapeNum].vertexArr[0].y*tileWidth);
+    }
+  }
+  endShape();
+  pop();
 
   //display rounded position of point on grid
   if (!checkMode && !showMode) {
@@ -116,7 +127,7 @@ function draw() {
     for (let i=0; i<vOrg.length; i++) {
       push();
       translate(width/2, height/2);
-      endlessLine(0,0,vOrg[i].x,vOrg[i].y);
+      endlessLine(0,0,vOrg[i].x*tileWidth,vOrg[i].y*tileWidth);
       pop();
     }
   }
@@ -140,8 +151,8 @@ function updateShapeNum(num) {
   if (shapeNum==shapes.length) shapeNum=0;
   if (shapeNum<0) shapeNum=shapes.length-1;
   vOrg = [];
-  for (let i=0; i<shapes[shapeNum].numberOfLoS; i++) {
-    vOrg.push(shapes[shapeNum].vOrg[i]);
+  for (let i=0; i<shapes[shapeNum].losArr.length; i++) {
+    vOrg.push(shapes[shapeNum].losArr[i]);
   }
   shapeName.html(shapes[shapeNum].name);
 }
@@ -177,8 +188,8 @@ function checkLoS() {
     for (let i=0; i<pArr.length; i++) {
       if ((i+1)%2==0) {
         for (let j=0; j<vOrg.length; j++) {
-          let vOrgx = vOrg[j].x + width/2;
-          let vOrgy = vOrg[j].y + height/2;
+          let vOrgx = vOrg[j].x*tileWidth + width/2;
+          let vOrgy = vOrg[j].y*tileWidth + height/2;
           let area = 0.5*abs(vOrgx*(pArr[i-1].y-pArr[i].y)+pArr[i-1].x*(pArr[i].y-vOrgy)+pArr[i].x*(vOrgy-pArr[i-1].y));
           if (area == 0) {
             pArr[i].isCorrect = true;
