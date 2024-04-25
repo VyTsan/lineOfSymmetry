@@ -52,7 +52,7 @@ function setup() {
 function draw() {
   //reset
   background('#f4f0e8');
-
+  
   //draw shape
   fill(255,10);
   strokeWeight(5);
@@ -112,13 +112,13 @@ function draw() {
     strokeWeight(5);
     stroke('blue');
     for (let i=0; i<vOrg.length; i++) {
-      push();
-      translate(width/2, height/2);
-      endlessLine(0,0,vOrg[i].x*tileWidth,vOrg[i].y*tileWidth);
-      pop();
+      let _point1 = p5.Vector.mult(vOrg[i].point1,tileWidth);
+      _point1.add(width/2,height/2);
+      let _point2 = p5.Vector.mult(vOrg[i].point2,tileWidth);
+      _point2.add(width/2,height/2);
+      endlessLine(_point1.x,_point1.y,_point2.x,_point2.y);
     }
   }
-
 }
 function cursorCatchVertex() {
   if (!checkMode && !showMode) {
@@ -192,11 +192,14 @@ function checkLoS() {
     for (let i=0; i<pArr.length; i++) {
       if ((i+1)%2==0) {
         for (let j=0; j<vOrg.length; j++) {
-          let vOrgx = vOrg[j].x*tileWidth + width/2;
-          let vOrgy = vOrg[j].y*tileWidth + height/2;
-          let area = 0.5*abs(vOrgx*(pArr[i-1].y-pArr[i].y)+pArr[i-1].x*(pArr[i].y-vOrgy)+pArr[i].x*(vOrgy-pArr[i-1].y));
-          if (area == 0) {
+          let _point1 = p5.Vector.mult(vOrg[j].point1,tileWidth);
+          _point1.add(width/2,height/2);
+          let _point2 = p5.Vector.mult(vOrg[j].point2,tileWidth);
+          _point2.add(width/2,height/2);
+          if ((pArr[i-1].equals(_point1) && pArr[i].equals(_point2)) || 
+              (pArr[i-1].equals(_point2) && pArr[i].equals(_point1))) {
             pArr[i].isCorrect = true;
+            break;
           }
         }
       }

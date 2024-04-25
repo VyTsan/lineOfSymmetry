@@ -11,8 +11,8 @@ let shapes = [
         {x:-4,y:0},
     ],
     losArr : [
-        {x:0,y:1},
-        {x:1,y:0},
+        {point1:new p5.Vector(0,-3),point2:new p5.Vector(0,3)},
+        {point1:new p5.Vector(-4,0),point2:new p5.Vector(4,0)},
     ]
 },
 {   name: 'Hình Vuông',
@@ -27,10 +27,10 @@ let shapes = [
         {x:-3,y:0},
     ], 
     losArr : [
-        {x:0,y:1},
-        {x:1,y:0},
-        {x:1,y:1},
-        {x:-1,y:1},
+        {point1:new p5.Vector(0,-3),point2:new p5.Vector(0,3)},
+        {point1:new p5.Vector(-3,0),point2:new p5.Vector(3,0)},
+        {point1:new p5.Vector(3,-3),point2:new p5.Vector(-3,3)},
+        {point1:new p5.Vector(-3,-3),point2:new p5.Vector(3,3)},
     ],
 },
 {   name: 'Hình Tam Giác Cân',
@@ -43,7 +43,7 @@ let shapes = [
         {x:-2,y:0},
     ],
     losArr : [
-        {x:0,y:1},
+        {point1:new p5.Vector(0,-3),point2:new p5.Vector(0,3)},
     ],
 },
 {   name: 'Hình Thoi',
@@ -58,8 +58,8 @@ let shapes = [
         {x:-2.5,y:-1.5},
     ],
     losArr : [
-        {x:0,y:1},
-        {x:1,y:0},
+        {point1:new p5.Vector(0,-3),point2:new p5.Vector(0,3)},
+        {point1:new p5.Vector(-5,0),point2:new p5.Vector(5,0)},
     ],
 },
 {   name: 'Hình Thang Cân',
@@ -74,7 +74,7 @@ let shapes = [
         {x:-3.5,y:0},
     ],
     losArr : [
-        {x:0,y:1},
+        {point1:new p5.Vector(0,-3),point2:new p5.Vector(0,3)},
     ],
 },
 {   name: 'Hình Bình Hành',
